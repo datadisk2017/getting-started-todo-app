@@ -68,7 +68,7 @@ services:
   ###################################################
   backend:
     build:
-      context: ./backend
+      context: ./
       target: backend-dev
     environment:
       MYSQL_HOST: mysql
