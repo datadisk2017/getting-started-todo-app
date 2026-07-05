@@ -108,3 +108,14 @@ COPY backend/src ./src
 COPY --from=client-build /usr/local/app/dist ./src/static
 EXPOSE 3000
 CMD ["node", "src/index.js"]
+
+#################################################
+FROM node:18
+
+WORKDIR /app
+COPY package*.json ./
+RUN npm install
+COPY . .
+
+CMD ["npm", "run", "dev"]
+#################################################

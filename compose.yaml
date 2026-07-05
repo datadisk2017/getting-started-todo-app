@@ -68,7 +68,7 @@ services:
   ###################################################
   backend:
     build:
-      context: ./
+      context: ./backend
       target: backend-dev
     environment:
       MYSQL_HOST: mysql
@@ -88,6 +88,9 @@ services:
     labels:
       traefik.http.routers.backend.rule: Host(`localhost`) && PathPrefix(`/api`)
       traefik.http.services.backend.loadbalancer.server.port: 3000
+    volumes:
+      - ./backend:/app
+    command: npm run dev
 
   ###################################################
   # Service: client
